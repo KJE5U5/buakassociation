@@ -11,10 +11,34 @@ const Navigation = () => {
 
   const navLinks = [
     { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/model", label: "Our Model" },
-    { path: "/impact", label: "Impact" },
-    { path: "/stories", label: "Stories" },
+    { 
+      path: "/about", 
+      label: "About",
+      submenu: [
+        { path: "/about", label: "About Us" },
+        { path: "/our-team", label: "Our Team" },
+        { path: "/partners", label: "Partners" },
+        { path: "/ashden-award-2024", label: "Ashden Award 2024" }
+      ]
+    },
+    { 
+      path: "/our-model", 
+      label: "Model",
+      submenu: [
+        { path: "/our-model", label: "How It Works" },
+        { path: "/technology", label: "Technology" },
+        { path: "/stories", label: "Stories" }
+      ]
+    },
+    { 
+      path: "/impact", 
+      label: "Impact",
+      submenu: [
+        { path: "/impact-dashboard", label: "Dashboard" },
+        { path: "/financials", label: "Financials" },
+        { path: "/carbon-credits", label: "Carbon Credits" }
+      ]
+    },
     { path: "/invest", label: "Invest" },
     { path: "/contact", label: "Contact" },
   ];

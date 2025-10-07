@@ -23,9 +23,10 @@ const Footer = () => {
           <div>
             <h3 className="font-bold text-lg mb-4">For Members</h3>
             <ul className="space-y-2">
-              <li><Link to="/join" className="text-muted-foreground hover:text-primary transition-colors">Join BUAK</Link></li>
-              <li><Link to="/model" className="text-muted-foreground hover:text-primary transition-colors">How It Works</Link></li>
-              <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
+              <li><Link to="/join-us" className="text-muted-foreground hover:text-primary transition-colors">Join BUAK</Link></li>
+              <li><Link to="/our-model" className="text-muted-foreground hover:text-primary transition-colors">How It Works</Link></li>
+              <li><Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors">FAQ</Link></li>
+              <li><Link to="/visit-us" className="text-muted-foreground hover:text-primary transition-colors">Site Visits</Link></li>
             </ul>
           </div>
 
@@ -87,7 +88,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="mt-6 text-center text-sm text-muted-foreground">
-            © 2025 BUAK. All Rights Reserved. | <Link to="/privacy" className="hover:text-primary">Privacy Policy</Link> | <Link to="/terms" className="hover:text-primary">Terms</Link>
+            © 2025 BUAK. All Rights Reserved. | <Link to="/privacy-policy" className="hover:text-primary">Privacy Policy</Link> | <Link to="/terms-of-use" className="hover:text-primary">Terms</Link> | <Link to="/cookie-policy" className="hover:text-primary">Cookies</Link>
           </div>
         </div>
       </div>
