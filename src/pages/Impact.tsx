@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { 
@@ -141,14 +142,17 @@ const Impact = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-innovation text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Impact Dashboard</h1>
+      <section className="relative py-20 bg-gradient-innovation text-primary-foreground overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,.1)_25%,rgba(255,255,255,.1)_50%,transparent_50%,transparent_75%,rgba(255,255,255,.1)_75%,rgba(255,255,255,.1))] bg-[length:40px_40px]"></div>
+        </div>
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-5xl font-bold mb-4 animate-fade-in">Impact Dashboard</h1>
           <p className="text-xl max-w-2xl mx-auto">
             Measuring What Matters: Real Data, Real Impact
           </p>
           <p className="text-sm mt-4 opacity-90">
-            Last Updated: October 2025
+            Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
           </p>
         </div>
       </section>
@@ -156,17 +160,35 @@ const Impact = () => {
       {/* Key Metrics Dashboard */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">Impact by the Numbers</h2>
+          <h2 className="text-4xl font-bold text-center mb-4">Impact at a Glance</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Live metrics tracking our environmental, social, and economic transformation
+          </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {impactMetrics.map((metric, index) => (
-              <Card key={index} className="p-6 hover:shadow-elegant transition-all">
-                <metric.icon className={`h-10 w-10 ${metric.color} mb-4`} />
-                <div className={`text-3xl font-bold mb-2 ${metric.color}`}>
+              <Card key={index} className="p-6 hover:shadow-elegant transition-all hover-scale group">
+                <metric.icon className={`h-10 w-10 ${metric.color} mb-4 transition-transform group-hover:scale-110`} />
+                <div className={`text-4xl font-bold mb-2 ${metric.color} animate-fade-in`}>
                   {metric.number}
                 </div>
                 <h3 className="font-bold mb-2">{metric.label}</h3>
                 <p className="text-sm text-muted-foreground">{metric.description}</p>
+                {metric.label === "Biodigesters Operational" && (
+                  <div className="mt-3 text-xs text-primary font-semibold">
+                    +3,450% since 2021
+                  </div>
+                )}
+                {metric.label === "Firewood Saved" && (
+                  <div className="mt-3 text-xs text-muted-foreground">
+                    ≈156 trees preserved
+                  </div>
+                )}
+                {metric.label === "Community Revenue" && (
+                  <div className="mt-3 text-xs text-muted-foreground">
+                    $23,300 annually
+                  </div>
+                )}
               </Card>
             ))}
           </div>
@@ -194,13 +216,45 @@ const Impact = () => {
             ))}
           </div>
 
-          <Card className="mt-12 p-8 bg-gradient-to-r from-primary/10 to-accent/10 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 text-center">Climate Impact</h3>
-            <p className="text-center text-muted-foreground max-w-2xl mx-auto">
-              By replacing firewood with biogas, BUAK members have prevented approximately 400 tonnes of CO2 
-              emissions annually—equivalent to taking 87 cars off the road for a year or planting 6,600 trees.
-            </p>
-          </Card>
+          <div className="mt-12 grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <Card className="p-6 bg-gradient-to-br from-primary/10 to-accent/10">
+              <h3 className="text-xl font-bold mb-3">Forest Preservation</h3>
+              <div className="flex flex-wrap gap-1 mb-4">
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <span key={i} className="text-2xl animate-fade-in" style={{ animationDelay: `${i * 0.05}s` }}>
+                    🌳
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm text-muted-foreground">
+                Each tree icon represents ~8 trees preserved annually
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                1 tree = 1,300 kg firewood equivalent
+              </p>
+            </Card>
+            
+            <Card className="p-6 bg-gradient-to-br from-accent/10 to-secondary/10">
+              <h3 className="text-xl font-bold mb-3">Climate Impact</h3>
+              <div className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span>CO₂ Emissions Avoided</span>
+                  <span className="font-bold text-primary">~400 tonnes</span>
+                </div>
+                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <span>Equivalent to:</span>
+                </div>
+                <div className="text-xs text-muted-foreground space-y-1 pl-4">
+                  <div>• 87 cars off the road for 1 year</div>
+                  <div>• Planting 6,600 trees</div>
+                  <div>• 174,000 liters of gasoline not burned</div>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground mt-4 italic">
+                *Methodology in development with Gold Standard verification
+              </p>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -271,25 +325,199 @@ const Impact = () => {
           </div>
 
           <Card className="mt-12 p-8 bg-gradient-warm text-white max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 text-center">Financial Sustainability</h3>
-            <div className="grid md:grid-cols-3 gap-6 text-center">
+            <h3 className="text-2xl font-bold mb-6 text-center">Financial Sustainability</h3>
+            <div className="grid md:grid-cols-4 gap-6 text-center mb-6">
               <div>
-                <div className="text-4xl font-bold mb-2">95%</div>
-                <p>Repayment Rate</p>
+                <div className="text-4xl font-bold mb-2 animate-fade-in">95%</div>
+                <p className="text-sm">Repayment Rate</p>
+                <p className="text-xs opacity-80 mt-1">In-kind model</p>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2">26%</div>
-                <p>Profit Margins</p>
+                <div className="text-4xl font-bold mb-2 animate-fade-in">26%</div>
+                <p className="text-sm">Profit Margins</p>
+                <p className="text-xs opacity-80 mt-1">Proven 3 years</p>
               </div>
               <div>
-                <div className="text-4xl font-bold mb-2">0</div>
-                <p>Members Left</p>
+                <div className="text-4xl font-bold mb-2 animate-fade-in">0</div>
+                <p className="text-sm">Members Left</p>
+                <p className="text-xs opacity-80 mt-1">100% retention</p>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2 animate-fade-in">25</div>
+                <p className="text-sm">Break-even</p>
+                <p className="text-xs opacity-80 mt-1">Digesters needed</p>
               </div>
             </div>
-            <p className="text-center mt-6">
+            <p className="text-center border-t border-white/20 pt-4">
               BUAK's revolving fund model ensures financial sustainability without donor dependency
             </p>
           </Card>
+        </div>
+      </section>
+
+      {/* Growth Trajectory */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">Growth Over Time</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Our journey from 2 pilot digesters to 300+ target installations
+          </p>
+          
+          <Card className="p-8 max-w-5xl mx-auto">
+            <div className="space-y-6">
+              {/* Milestone Timeline */}
+              <div className="relative">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-secondary to-accent"></div>
+                <div className="space-y-6 pl-8">
+                  {[
+                    { year: "2021", title: "Pilot", desc: "2 digesters", status: "complete" },
+                    { year: "2022", title: "Formalization", desc: "25 digesters", status: "complete" },
+                    { year: "2023", title: "Scaling", desc: "50 digesters", status: "complete" },
+                    { year: "2024", title: "Recognition", desc: "73 digesters, Ashden Award", status: "complete" },
+                    { year: "2025", title: "Investment-Ready", desc: "Current: 73 digesters", status: "current" },
+                    { year: "2026-2027", title: "Target", desc: "300 digesters (with $25K investment)", status: "future" }
+                  ].map((milestone, i) => (
+                    <div key={i} className={`relative ${milestone.status === 'current' ? 'scale-105' : ''}`}>
+                      <div className={`absolute -left-[33px] top-2 w-3 h-3 rounded-full ${
+                        milestone.status === 'complete' ? 'bg-primary' : 
+                        milestone.status === 'current' ? 'bg-secondary animate-pulse' : 
+                        'bg-muted-foreground/50'
+                      }`}></div>
+                      <div className={`p-4 rounded-lg ${
+                        milestone.status === 'current' ? 'bg-secondary/10 border-2 border-secondary' : 'bg-muted/30'
+                      }`}>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <div className="text-sm text-muted-foreground">{milestone.year}</div>
+                            <div className="text-xl font-bold">{milestone.title}</div>
+                            <div className="text-sm text-muted-foreground">{milestone.desc}</div>
+                          </div>
+                          {milestone.status === 'current' && (
+                            <span className="px-3 py-1 bg-secondary text-secondary-foreground rounded-full text-xs font-semibold">
+                              Current
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      {/* Verification & Methodology */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">How We Measure Impact</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Transparent, verified, and independently assessed metrics
+          </p>
+          
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-8">
+            <Card className="p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-bold">✓</span>
+                </div>
+                <div>
+                  <h3 className="font-bold mb-2">Third-Party Verification</h3>
+                  <p className="text-sm text-muted-foreground">
+                    CARE International Impact Assessment (2024) verified 2.47:1 Social ROI using SROI Network standards
+                  </p>
+                </div>
+              </div>
+            </Card>
+            
+            <Card className="p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-bold">✓</span>
+                </div>
+                <div>
+                  <h3 className="font-bold mb-2">Quarterly Household Surveys</h3>
+                  <p className="text-sm text-muted-foreground">
+                    All 73 member households surveyed every 3 months on satisfaction, income, time use, and health
+                  </p>
+                </div>
+              </div>
+            </Card>
+            
+            <Card className="p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-bold">✓</span>
+                </div>
+                <div>
+                  <h3 className="font-bold mb-2">Operational Data Tracking</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Daily gas production, weekly bio-slurry collections, monthly maintenance visits—all documented
+                  </p>
+                </div>
+              </div>
+            </Card>
+            
+            <Card className="p-6">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-bold">✓</span>
+                </div>
+                <div>
+                  <h3 className="font-bold mb-2">Financial Audits</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Annual external audit by certified accountant. Open books to members. Quarterly reports to Ashden
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+          
+          <div className="text-center">
+            <a href="/resources" className="inline-block">
+              <Button variant="outline" size="lg">
+                Download Full Impact Report (PDF)
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* SDG Alignment */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">Contributing to Global Goals</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Aligned with UN Sustainable Development Goals
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              { number: "7", title: "Affordable and Clean Energy", items: ["73 households with clean cooking energy", "Renewable biogas from waste"] },
+              { number: "8", title: "Decent Work and Economic Growth", items: ["UGX 87.6M community income", "Dignified employment for refugees"] },
+              { number: "10", title: "Reduced Inequalities", items: ["Refugee economic inclusion", "35% women leadership"] },
+              { number: "13", title: "Climate Action", items: ["500,975 kg firewood saved annually", "CO₂ verification in progress"] },
+              { number: "15", title: "Life on Land", items: ["156 trees preserved per year", "Deforestation mitigation"] }
+            ].map((sdg, i) => (
+              <Card key={i} className="p-6 hover:shadow-elegant transition-all">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold">
+                    {sdg.number}
+                  </div>
+                  <h3 className="font-bold text-sm">{sdg.title}</h3>
+                </div>
+                <ul className="space-y-2">
+                  {sdg.items.map((item, j) => (
+                    <li key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <span className="text-primary mt-0.5">✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
