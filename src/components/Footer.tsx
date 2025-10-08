@@ -1,11 +1,25 @@
 import { Link } from "react-router-dom";
 import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
+import buakLogo from "@/assets/buak-logo.jpg";
 import { Button } from "./ui/button";
 
 const Footer = () => {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
+        {/* Logo Section */}
+        <div className="flex flex-col items-center justify-center mb-8">
+          <img 
+            src={buakLogo} 
+            alt="BUAK Logo" 
+            className="h-20 w-20 object-contain mb-3"
+          />
+          <h3 className="text-xl font-bold text-primary text-center">BUAK</h3>
+          <p className="text-sm text-muted-foreground text-center max-w-md">
+            Bio-Energy Umbrella Association of Kyangwali
+          </p>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Quick Links */}
           <div>

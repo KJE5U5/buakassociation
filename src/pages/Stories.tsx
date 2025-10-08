@@ -67,9 +67,12 @@ const Stories = () => {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-hero text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Member Stories</h1>
+          <h1 className="text-5xl font-bold mb-4">Stories of Transformation</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Real people, real impact—hear from BUAK members transforming their lives
+            From Firewood Collectors to Clean Energy Entrepreneurs
+          </p>
+          <p className="text-lg mt-2 opacity-90">
+            73 Families, 73 Stories
           </p>
         </div>
       </section>

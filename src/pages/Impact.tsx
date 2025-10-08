@@ -143,9 +143,12 @@ const Impact = () => {
       {/* Hero Section */}
       <section className="py-20 bg-gradient-innovation text-primary-foreground">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Our Impact</h1>
+          <h1 className="text-5xl font-bold mb-4">Impact Dashboard</h1>
           <p className="text-xl max-w-2xl mx-auto">
-            Measuring change across environmental, social, and economic dimensions
+            Measuring What Matters: Real Data, Real Impact
+          </p>
+          <p className="text-sm mt-4 opacity-90">
+            Last Updated: October 2025
           </p>
         </div>
       </section>

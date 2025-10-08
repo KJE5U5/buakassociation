@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
+import buakLogo from "@/assets/buak-logo.jpg";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,10 +49,12 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-gradient-hero rounded-lg flex items-center justify-center group-hover:shadow-glow transition-all">
-              <span className="text-primary-foreground font-bold text-xl">B</span>
-            </div>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <img 
+              src={buakLogo} 
+              alt="BUAK - Bio-Energy Umbrella Association of Kyangwali" 
+              className="h-12 w-12 object-contain group-hover:scale-105 transition-transform"
+            />
             <span className="text-xl font-bold bg-gradient-hero bg-clip-text text-transparent">
               BUAK
             </span>
