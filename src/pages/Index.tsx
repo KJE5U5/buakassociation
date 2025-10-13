@@ -281,19 +281,23 @@ const Index = () => {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Whether you want to invest, partner, or join us as a member—we'd love to hear from you.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <Link to="/invest">
               <Button variant="secondary" size="lg">Invest</Button>
             </Link>
-            <Link to="/join">
+            <Link to="/join-us">
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-foreground">
                 Become a Member
               </Button>
             </Link>
-            <Link to="/contact">
+            <Link to="/work-with-us">
               <Button variant="accent" size="lg">Partner With Us</Button>
             </Link>
           </div>
+          <p className="text-lg mb-4">Or explore our story:</p>
+          <Button variant="hero" size="lg">
+            Watch Our Video (3 min)
+          </Button>
         </div>
       </section>
 
