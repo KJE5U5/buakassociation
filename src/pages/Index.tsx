@@ -14,7 +14,14 @@ import {
   Users, 
   Zap,
   Award,
-  ChevronRight
+  ChevronRight,
+  ArrowRight,
+  Recycle,
+  Sprout,
+  DollarSign,
+  Target,
+  HandshakeIcon,
+  Globe
 } from "lucide-react";
 
 const Index = () => {
@@ -185,6 +192,117 @@ const Index = () => {
                   </Button>
                 </Link>
               </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* How BUAK Works - Flow Diagram */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">How BUAK Works</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            A simple, sustainable cycle that transforms waste into wealth
+          </p>
+
+          <div className="max-w-6xl mx-auto">
+            {/* Flow Diagram */}
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-4 items-center mb-8">
+              {/* Step 1 */}
+              <Card className="p-6 text-center hover:shadow-glow transition-all">
+                <Recycle className="h-10 w-10 text-primary mx-auto mb-3" />
+                <h3 className="font-bold mb-2">Feed Waste In</h3>
+                <p className="text-xs text-muted-foreground">Animal waste goes into digester</p>
+              </Card>
+
+              <div className="hidden md:flex justify-center">
+                <ArrowRight className="h-8 w-8 text-primary" />
+              </div>
+
+              {/* Step 2 */}
+              <Card className="p-6 text-center hover:shadow-glow transition-all">
+                <Flame className="h-10 w-10 text-primary mx-auto mb-3" />
+                <h3 className="font-bold mb-2">Get Clean Cooking Fuel</h3>
+                <p className="text-xs text-muted-foreground">Biogas for daily cooking</p>
+              </Card>
+
+              <div className="hidden md:flex justify-center">
+                <ArrowRight className="h-8 w-8 text-primary" />
+              </div>
+
+              {/* Step 3 */}
+              <Card className="p-6 text-center hover:shadow-glow transition-all">
+                <Sprout className="h-10 w-10 text-primary mx-auto mb-3" />
+                <h3 className="font-bold mb-2">Grow More, Farm Better</h3>
+                <p className="text-xs text-muted-foreground">Bio-slurry fertilizer</p>
+              </Card>
+
+              <div className="hidden md:flex justify-center">
+                <ArrowRight className="h-8 w-8 text-primary" />
+              </div>
+
+              {/* Step 4 */}
+              <Card className="p-6 text-center hover:shadow-glow transition-all">
+                <DollarSign className="h-10 w-10 text-primary mx-auto mb-3" />
+                <h3 className="font-bold mb-2">Create New Income Streams</h3>
+                <p className="text-xs text-muted-foreground">Black Soldier Fly protein & bio-slurry sales</p>
+              </Card>
+            </div>
+
+            <Card className="p-6 bg-gradient-subtle border-primary/20">
+              <p className="text-center text-muted-foreground">
+                <strong>The Complete Cycle:</strong> Community mobilizer identifies eligible households → 
+                Technical verification → Member signs contract → 9-day construction → Training & feeding → 
+                Weekly bio-slurry collection → Income generation & loan repayment
+              </p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Why BUAK - Value Proposition */}
+      <section className="py-20 bg-gradient-to-b from-muted/30 to-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">Why BUAK?</h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Purpose-driven innovation that creates lasting impact
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Card 1: Community-Owned */}
+            <Card className="p-8 hover:shadow-elegant transition-all">
+              <div className="bg-primary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                <HandshakeIcon className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Community-Owned, Market-Driven, Replicable</h3>
+              <p className="text-muted-foreground">
+                Cooperative ownership ensures sustainability. Market-based revenue model eliminates donor dependency. 
+                Proven model ready for replication across 13 refugee-hosting districts.
+              </p>
+            </Card>
+
+            {/* Card 2: Inclusive Finance */}
+            <Card className="p-8 hover:shadow-elegant transition-all">
+              <div className="bg-secondary/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                <Target className="h-8 w-8 text-secondary" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Inclusive Finance for Refugees</h3>
+              <p className="text-muted-foreground">
+                Off-take based financing removes cash barriers. No collateral required. 
+                Repayment through production, not out-of-pocket payments. 95% repayment rate proves the model works.
+              </p>
+            </Card>
+
+            {/* Card 3: Triple Impact */}
+            <Card className="p-8 hover:shadow-elegant transition-all">
+              <div className="bg-accent/10 rounded-full w-16 h-16 flex items-center justify-center mb-4">
+                <Globe className="h-8 w-8 text-accent" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Climate, Health & Food Security in One</h3>
+              <p className="text-muted-foreground">
+                Reduces deforestation and CO₂ emissions. Eliminates smoke-related health issues. 
+                Bio-slurry increases crop yields. BSF protein enhances nutrition and income.
+              </p>
             </Card>
           </div>
         </div>
