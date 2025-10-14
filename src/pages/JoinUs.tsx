@@ -8,8 +8,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const JoinUs = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -22,10 +25,107 @@ const JoinUs = () => {
     additional: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Application submitted:", formData);
-    // Here you would handle form submission
+    
+    // Validation
+    if (!formData.name.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter your name",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!formData.phone.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter your phone number",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!formData.village.trim()) {
+      toast({
+        title: "Error",
+        description: "Please enter your village/zone",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    if (!formData.type) {
+      toast({
+        title: "Error",
+        description: "Please select if you are a refugee or host community",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Create WhatsApp message
+      const message = `🎯 NEW BUAK MEMBERSHIP APPLICATION
+
+📋 APPLICANT DETAILS:
+Name: ${formData.name}
+Phone: ${formData.phone}
+Village/Zone: ${formData.village}
+Type: ${formData.type === 'refugee' ? 'Refugee' : 'Host Community'}
+
+✅ REQUIREMENTS:
+${formData.hasCattle ? '✓' : '✗'} Has 2+ cattle or 4+ goats
+${formData.hasWater ? '✓' : '✗'} Has water access
+${formData.hasSpace ? '✓' : '✗'} Has 5m x 5m space
+
+📻 How they heard about us: ${formData.hearAbout || 'Not specified'}
+
+💬 Additional Information:
+${formData.additional || 'None provided'}
+
+---
+Please contact this applicant within 7 days to schedule a site visit.`;
+
+      // Send to WhatsApp (Robert's number)
+      const whatsappNumber = "256758998928";
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+      // Open WhatsApp in new tab
+      window.open(whatsappUrl, '_blank');
+
+      // Show success message
+      toast({
+        title: "Application Submitted! ✅",
+        description: "We've prepared your application message. Please send it via WhatsApp to complete your application. We'll contact you within 7 days.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        phone: "",
+        village: "",
+        type: "",
+        hasCattle: false,
+        hasWater: false,
+        hasSpace: false,
+        hearAbout: "",
+        additional: ""
+      });
+
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was a problem submitting your application. Please try again or contact us directly via WhatsApp at +256 758998928.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -554,7 +654,14 @@ const JoinUs = () => {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full">SUBMIT APPLICATION</Button>
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full" 
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "SUBMIT APPLICATION"}
+              </Button>
 
               <div className="bg-muted p-6 rounded-lg mt-6">
                 <h3 className="font-bold mb-3">Or Contact Us Directly:</h3>
