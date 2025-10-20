@@ -2,8 +2,47 @@ import { Link } from "react-router-dom";
 import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
 import buakLogo from "@/assets/buak-logo.jpg";
 import { Button } from "./ui/button";
+import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "./ui/dialog";
+import { Input } from "./ui/input";
 
 const Footer = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage("");
+
+    try {
+      const response = await fetch("https://buakassociation.org/server/subscribe.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setMessage("Thank you for subscribing!");
+        setEmail("");
+        setTimeout(() => {
+          setIsModalOpen(false);
+          setMessage("");
+        }, 2000);
+      } else {
+        setMessage("Failed to subscribe. Please try again.");
+      }
+    } catch (error) {
+      setMessage("An error occurred. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
@@ -73,13 +112,59 @@ const Footer = () => {
             </div>
             <div className="mt-4">
               <p className="text-sm text-muted-foreground mb-2">Newsletter</p>
-              <Button variant="outline" size="sm" className="w-full">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="w-full"
+                onClick={() => setIsModalOpen(true)}
+              >
                 <Mail className="mr-2 h-4 w-4" />
                 Subscribe
               </Button>
             </div>
           </div>
         </div>
+
+        {/* Subscription Modal */}
+        <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Subscribe to Our Newsletter</DialogTitle>
+              <DialogDescription>
+                Stay updated with the latest news and updates from BUAK.
+              </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handleSubscribe}>
+              <div className="mb-4">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full"
+                />
+              </div>
+              {message && (
+                <p className={`text-sm ${message.includes("Thank") ? "text-green-600" : "text-red-600"} mb-4`}>
+                  {message}
+                </p>
+              )}
+              <DialogFooter>
+                <Button type="submit" disabled={isLoading}>
+                  {isLoading ? "Subscribing..." : "Subscribe"}
+                </Button>
+                <Button 
+                  type="button" 
+                  variant="outline" 
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancel
+                </Button>
+              </DialogFooter>
+            </form>
+          </DialogContent>
+        </Dialog>
 
         {/* Bottom Section */}
         <div className="border-t border-border pt-8">

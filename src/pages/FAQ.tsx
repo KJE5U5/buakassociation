@@ -88,7 +88,8 @@ const FAQ = () => {
       <Navigation />
       <main>
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-hero">
+        <section className=" text-white relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(img_11.png)` }}>
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-5xl font-bold text-primary-foreground mb-4">Frequently Asked Questions</h1>
             <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
@@ -121,7 +122,7 @@ const FAQ = () => {
         </section>
 
         {/* Still Have Questions */}
-        <section className="py-16 bg-gradient-warm text-center">
+        <section className="py-16 bg-amber-600 text-center">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-primary-foreground mb-4">Still Have Questions?</h2>
             <p className="text-primary-foreground/90 mb-8 max-w-2xl mx-auto">

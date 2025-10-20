@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import DownloadInvestmentDeck from "@/components/downloaddeck";
 import Footer from "@/components/Footer";
 import { 
   TrendingUp, 
@@ -26,14 +28,15 @@ const Invest = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-hero text-primary-foreground">
+      <section className=" text-white relative h-[60vh] flex items-center justify-center bg-cover bg-center text-white"
+        style={{ backgroundImage: `url(img_11.png)` }}>
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-4">Invest in Refugee-Led Innovation</h1>
           <p className="text-2xl mb-6 max-w-2xl mx-auto">
             Proven Model | 3 Years Data | Ashden Award Winner
           </p>
           
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
+          <div className=" text-white grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
             <Card className="bg-white/10 backdrop-blur border-white/20">
               <CardContent className="pt-6 text-center">
                 <p className="text-3xl font-bold mb-2">15-25% ROI</p>
@@ -59,10 +62,8 @@ const Invest = () => {
               <Calendar className="mr-2" />
               Schedule Investor Call
             </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
-              <Download className="mr-2" />
-              Download Investment Deck
-            </Button>
+            
+           < DownloadInvestmentDeck/>
           </div>
         </div>
       </section>
@@ -176,10 +177,7 @@ const Invest = () => {
           </div>
 
           <div className="text-center mt-8">
-            <Button variant="outline">
-              <Download className="mr-2" />
-              Download Full Investment Deck
-            </Button>
+          <DownloadInvestmentDeck/>
           </div>
         </div>
       </section>
@@ -398,7 +396,7 @@ const Invest = () => {
             </Card>
           </div>
 
-          <div className="max-w-4xl mx-auto mt-12 p-8 bg-gradient-innovation text-primary-foreground rounded-lg text-center">
+          <div className="max-w-4xl mx-auto mt-12 p-8 bg-primary text-primary-foreground rounded-lg text-center">
             <p className="text-2xl font-bold mb-2">RESULT</p>
             <p className="text-4xl font-bold mb-4">Your $25,000 creates $909,000 in total value</p>
             <p className="text-sm opacity-90">
@@ -725,7 +723,7 @@ const Invest = () => {
             </Card>
           </div>
 
-          <Card className="max-w-4xl mx-auto mt-12 bg-gradient-innovation text-primary-foreground">
+          <Card className="max-w-4xl mx-auto mt-12 bg-primary text-primary-foreground">
             <CardContent className="pt-6 text-center">
               <p className="text-xl mb-4">
                 <strong>NEXT 90 DAYS:</strong> BUAK installs 15 new digesters with or without investment.
@@ -943,10 +941,12 @@ const Invest = () => {
           </div>
 
           <div className="text-center mt-8">
-            <Button variant="outline">
+            <Link to = "/contact">
+             <Button variant="outline">
               <Calendar className="mr-2" />
               Schedule Call with Leadership
-            </Button>
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

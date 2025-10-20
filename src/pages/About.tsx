@@ -1,11 +1,13 @@
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import teamImage from "@/assets/team-community.jpg";
 import { Link } from "react-router-dom";
-import { Award, Users, TrendingUp, Target, Heart, Lightbulb } from "lucide-react";
-
+import { Award, Users, TrendingUp, Target, Heart, Lightbulb, Mic, Newspaper } from "lucide-react";
+import { motion } from "framer-motion";
+import RecognitionSection from "@/components/RecognitionSection";
 const About = () => {
   const values = [
     {
@@ -47,7 +49,43 @@ const About = () => {
     { year: "2024", event: "Ashden Award Winner - International recognition" },
     { year: "2025", event: "Investment-ready - Scaling to 300 digesters" }
   ];
+// Scroll-triggered animation component
+const FadeUpElement = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            setIsVisible(true);
+          }, delay);
+        }
+      },
+      { threshold: 0.1, rootMargin: "-50px" }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <div
+      ref={elementRef}
+      className={`transition-all duration-700 ease-out ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-8'
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -55,7 +93,7 @@ const About = () => {
       {/* Hero Section */}
       <section 
         className="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${teamImage})` }}
+        style={{ backgroundImage: `url(img_11.png)` }}
       >
         <div className="absolute inset-0 bg-gradient-overlay"></div>
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
@@ -69,80 +107,159 @@ const About = () => {
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="text-4xl font-bold mb-8 text-center">From 2 to 73: The BUAK Story</h2>
           
-          <div className="prose prose-lg max-w-none mb-12">
-            <p className="text-lg leading-relaxed mb-4">
-              In 2021, Kyangwali Refugee Settlement faced a triple crisis: 99% of 149,647 refugees relied on firewood, 
-              spending 3-4 hours daily collecting it. Bugoma Forest was disappearing—67,900 hectares lost since 2002. 
-              And with biodigesters costing 473 days of earnings, clean energy remained a dream for families earning $2 a day.
-            </p>
-            
-            <p className="text-lg leading-relaxed mb-4">
-              But two households dared to try something different.
-            </p>
+          <section className="py-24 bg-background">
+            <div className="container mx-auto px-6 max-w-5xl">
+              <FadeUpElement>
+                <div className="relative mb-16 overflow-hidden rounded-2xl shadow-xl">
+                  <img
+                    src="/img_3.png"  // Replace with actual image URL depicting the crisis (e.g., deforestation or firewood collection)
+                    alt="The triple crisis in Kyangwali: reliance on firewood and forest loss"
+                    className="w-full h-96 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center p-8">
+                    <p className="text-white text-3xl font-bold text-center max-w-3xl transform -rotate-3 bg-primary/80 px-6 py-3 rounded-lg shadow-lg">
+                      In 2021, a triple crisis: 99% on firewood, forests vanishing, clean energy unaffordable.
+                    </p>
+                  </div>
+                </div>
+              </FadeUpElement>
 
-            <p className="text-lg leading-relaxed mb-4">
-              With support from local partners, Sarah Ninsiima and James Okello became BUAK's first members. 
-              They contributed local materials—sand, gravel, stones—while a small revolving fund covered skilled labor 
-              and equipment. In 15 days, they had biodigesters. No cash upfront. Just belief in a better way.
-            </p>
+              <FadeUpElement delay={100}>
+                <p className="text-lg leading-relaxed mb-6 text-center italic border-b-2 border-primary pb-6 max-w-3xl mx-auto">
+                  But two households dared to try something different.
+                </p>
+              </FadeUpElement>
 
-            <p className="text-lg leading-relaxed mb-4">
-              The transformation was immediate. Clean cooking gas. No more smoke. Time freed. And something unexpected: 
-              the bio-slurry by-product was valuable. Farmers wanted it. Sarah and James started selling it.
-            </p>
+              <div className="grid md:grid-cols-2 gap-12 mb-12 items-center">
+                <FadeUpElement delay={200}>
+                  <p className="text-lg leading-relaxed transform translate-x-4 bg-muted/50 p-6 rounded-r-xl shadow-md">
+                    With support from local partners, Sarah Ninsiima and James Okello became BUAK's first members.
+                    They contributed local materials—sand, gravel, stones—while a small revolving fund covered skilled labor
+                    and equipment. In 15 days, they had biodigesters. No cash upfront. Just belief in a better way.
+                  </p>
+                </FadeUpElement>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4">The Breakthrough: Offtake-Based Financing</h3>
-            
-            <p className="text-lg leading-relaxed mb-4">
-              Traditional biogas programs required 100% cash upfront—impossible for refugees. BUAK flipped the model: 
-              members contribute 30% in-kind, BUAK finances 70%, and repayment happens automatically through bio-slurry sales. 
-              No cash burden. Aligned incentives.
-            </p>
+                <FadeUpElement delay={300}>
+                  <div className="order-first md:order-last">
+                    <img
+                      src="/img_4.png"  // Replace with image of early members or biodigester installation
+                      alt="BUAK's first members installing biodigesters"
+                      className="w-full h-80 object-cover rounded-l-xl shadow-xl"
+                    />
+                  </div>
+                </FadeUpElement>
+              </div>
 
-            <p className="text-lg leading-relaxed mb-4">
-              The model worked. Repayment rates jumped from 54% (cash model) to 95% (offtake model). Word spread. 
-              By 2022, 25 households had joined. BUAK formalized as a cooperative—refugee-led, democratically governed, 
-              community-owned.
-            </p>
+              <FadeUpElement delay={400}>
+                <p className="text-lg leading-relaxed mb-8 text-right pr-12 relative">
+                  The transformation was immediate. Clean cooking gas. No more smoke. Time freed. And something unexpected:
+                  the bio-slurry by-product was valuable. Farmers wanted it. Sarah and James started selling it.
+                  <span className="absolute top-0 right-0 text-6xl text-primary/20 transform rotate-12">✨</span>
+                </p>
+              </FadeUpElement>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4">Scaling with Purpose</h3>
-            
-            <p className="text-lg leading-relaxed mb-4">
-              By 2023, BUAK reached 50 digesters. By 2024, 73. Growth was intentional—quality over speed. 
-              Every digester installed correctly. Every member trained thoroughly. Every system maintained monthly. 
-              The result: 87.7% uptime, 94% satisfaction, zero members leaving.
-            </p>
+              <FadeUpElement delay={500}>
+                <h3 className="text-3xl font-bold mt-12 mb-6 text-center uppercase tracking-widest text-primary border-t-4 border-dashed border-muted pt-6">
+                  The Breakthrough: Offtake-Based Financing
+                </h3>
+              </FadeUpElement>
 
-            <p className="text-lg leading-relaxed mb-4">
-              In 2024, international recognition arrived: <strong>Ashden Climate Innovation Award</strong>—the first 
-              refugee-led biogas cooperative in East Africa to win. Validation that BUAK wasn't charity. It was entrepreneurship.
-            </p>
+              <div className="grid md:grid-cols-2 gap-12 mb-12 items-center">
+                <FadeUpElement delay={600}>
+                  <div>
+                    <img
+                      src="/img_2.png"  // Replace with diagram or image illustrating the financing model
+                      alt="Offtake-based financing model in action"
+                      className="w-full h-72 object-cover rounded-r-xl shadow-xl"
+                    />
+                  </div>
+                </FadeUpElement>
 
-            <h3 className="text-2xl font-bold mt-8 mb-4">Today: 69 Members, One Mission</h3>
-            
-            <p className="text-lg leading-relaxed mb-4">
-              BUAK is now 69 members strong—35 refugees, 34 host community, 35% women. We've proven the model works:
-            </p>
-            
-            <ul className="list-disc pl-6 mb-4">
-              <li>73 biodigesters operational</li>
-              <li>UGX 87.6M community revenue generated</li>
-              <li>500,975 kg firewood saved annually</li>
-              <li>26% profit margins maintained</li>
-              <li>95% repayment rate achieved</li>
-            </ul>
+                <FadeUpElement delay={700}>
+                  <p className="text-lg leading-relaxed transform -translate-x-4 bg-accent/10 p-6 rounded-l-xl shadow-md">
+                    Traditional biogas programs required 100% cash upfront—impossible for refugees. BUAK flipped the model:
+                    members contribute 30% in-kind, BUAK finances 70%, and repayment happens automatically through bio-slurry sales.
+                    No cash burden. Aligned incentives. The model worked. Repayment rates jumped from 54% (cash model) to 95% (offtake model).
+                    Word spread. By 2022, 25 households had joined. BUAK formalized as a cooperative—refugee-led, democratically governed,
+                    community-owned.
+                  </p>
+                </FadeUpElement>
+              </div>
 
-            <p className="text-lg leading-relaxed mb-4">
-              But we're just beginning. With $25,000, we'll scale to 300 digesters, transforming 227 more families 
-              while proving that refugee-led innovation can drive climate action, economic empowerment, and community 
-              transformation—all at once.
-            </p>
+              <FadeUpElement delay={800}>
+                <h3 className="text-3xl font-bold mt-12 mb-6 text-center underline decoration-wavy decoration-secondary">
+                  Scaling with Purpose
+                </h3>
+              </FadeUpElement>
 
-            <p className="text-xl font-bold text-primary mt-8">
-              This isn't aid. This is entrepreneurship. This is BUAK.
-            </p>
-          </div>
+              <FadeUpElement delay={900}>
+                <p className="text-lg leading-relaxed mb-8 text-center max-w-4xl mx-auto relative">
+                  By 2023, BUAK reached 50 digesters. By 2024, 73. Growth was intentional—quality over speed.
+                  Every digester installed correctly. Every member trained thoroughly. Every system maintained monthly.
+                  The result: 87.7% uptime, 94% satisfaction, zero members leaving.
+                  <span className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 text-5xl text-secondary/30">📈</span>
+                </p>
+              </FadeUpElement>
 
+              <FadeUpElement delay={1000}>
+                <div className="relative mb-16 overflow-hidden rounded-2xl shadow-xl">
+                  <img
+                    src="/Picture10.png"  // Replace with image of award or scaling impact
+                    alt="BUAK winning the Ashden Award"
+                    className="w-full h-96 object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center p-8">
+                    <p className="text-white text-2xl italic font-semibold text-center max-w-2xl transform rotate-2 bg-secondary/80 px-6 py-3 rounded-lg">
+                      In 2024, international recognition: <strong>Ashden Climate Innovation Award</strong>—the first refugee-led biogas cooperative in East Africa to win.
+                    </p>
+                  </div>
+                </div>
+              </FadeUpElement>
+
+              <FadeUpElement delay={1100}>
+                <h3 className="text-3xl font-bold mt-12 mb-6 text-center tracking-tight text-foreground">
+                  Today: 69 Members, One Mission
+                </h3>
+              </FadeUpElement>
+
+              <FadeUpElement delay={1200}>
+                <p className="text-lg leading-relaxed mb-6">
+                  BUAK is now 69 members strong—35 refugees, 34 host community, 35% women. We've proven the model works:
+                </p>
+                <ul className="grid md:grid-cols-2 gap-4 mb-8 pl-6 list-none">
+                  {['73 biodigesters operational', 'UGX 87.6M community revenue generated', '500,975 kg firewood saved annually', '26% profit margins maintained', '95% repayment rate achieved'].map((item, idx) => (
+                    <li key={idx} className="flex items-start text-lg">
+                      <span className="text-primary mr-2 text-xl">✓</span> {item}
+                    </li>
+                  ))}
+                </ul>
+              </FadeUpElement>
+
+              <div className="grid md:grid-cols-2 gap-12 mb-12 items-center">
+                <FadeUpElement delay={1300}>
+                  <p className="text-lg leading-relaxed transform translate-y-4 bg-muted/50 p-6 rounded-xl shadow-md">
+                    But we're just beginning. With $25,000, we'll scale to 300 digesters, transforming 227 more families
+                    while proving that refugee-led innovation can drive climate action, economic empowerment, and community
+                    transformation—all at once.
+                  </p>
+                </FadeUpElement>
+
+                <FadeUpElement delay={1400}>
+                  <img
+                    src="/Picture12.png"  // Replace with visionary image of scaling/community impact
+                    alt="Future vision: Scaling to 300 digesters"
+                    className="w-full h-80 object-cover rounded-xl shadow-xl"
+                  />
+                </FadeUpElement>
+              </div>
+
+              <FadeUpElement delay={1500}>
+                <p className="text-2xl font-extrabold text-primary text-center mt-12 uppercase tracking-wider border-t-2 border-primary pt-6">
+                  This isn't aid. This is entrepreneurship. This is BUAK.
+                </p>
+              </FadeUpElement>
+            </div>
+          </section>
           {/* Timeline */}
           <Card className="p-8 bg-gradient-to-r from-primary/10 to-accent/10">
             <h3 className="text-2xl font-bold mb-6 text-center">Our Journey</h3>
@@ -254,26 +371,7 @@ const About = () => {
       </section>
 
       {/* Recognition */}
-      <section className="py-20 bg-gradient-innovation text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <Award className="h-16 w-16 mx-auto mb-6" />
-          <h2 className="text-4xl font-bold mb-4">Recognition & Awards</h2>
-          <div className="max-w-2xl mx-auto">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold mb-2">🏆 Ashden Climate Innovation Award 2024</h3>
-              <p className="text-lg">"First refugee-led biogas cooperative in East Africa"</p>
-            </div>
-            <div className="mb-6">
-              <h3 className="text-xl font-bold mb-2">📰 Media Features</h3>
-              <p>Daily Monitor, New Vision, UNHCR Innovation</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold mb-2">🎤 Speaking Engagements</h3>
-              <p>Africa Climate Week, Impact Investing Forum</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <RecognitionSection />
 
       {/* CTA */}
       <section className="py-20">

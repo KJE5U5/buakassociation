@@ -40,3 +40,27 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Add to your global CSS file */
+.logo-slider {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
+}
+
+/* Smooth hover effects for logos */
+.logo-item {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.logo-item:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}

@@ -65,7 +65,8 @@ const OurTeam = () => {
       <Navigation />
       <main>
         {/* Hero Section */}
-        <section className="py-20 bg-gradient-hero">
+        <section className=" text-white relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(img_11.png)` }}>
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-5xl font-bold text-primary-foreground mb-4">Meet Our Team</h1>
             <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">

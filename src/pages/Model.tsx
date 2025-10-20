@@ -10,7 +10,10 @@ import {
   Repeat,
   DollarSign,
   Users,
-  Leaf
+  Leaf,
+  User,
+  Wallet,
+  Check
 } from "lucide-react";
 
 const Model = () => {
@@ -81,7 +84,8 @@ const Model = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-innovation text-primary-foreground">
+      <section className=" text-white relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+        style={{ backgroundImage: `url(img_11.png)` }}>
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold mb-4">Our Model: How It Works</h1>
           <p className="text-xl max-w-2xl mx-auto">
@@ -124,49 +128,64 @@ const Model = () => {
       </section>
 
       {/* Innovation Section */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">The BUAK Innovation</h2>
+      <section className="py-20 bg-muted/30 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-10 left-10 w-20 h-20 bg-primary/10 rounded-full blur-xl"></div>
+        <div className="absolute bottom-10 right-10 w-32 h-32 bg-green-500/10 rounded-full blur-2xl"></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <h2 className="text-4xl font-bold text-center mb-4">The BUAK Innovation</h2>
+          <p className="text-lg text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            Transforming waste into wealth through innovative financing
+          </p>
           
-          <Card className="p-8 max-w-4xl mx-auto bg-gradient-hero text-primary-foreground mb-12">
-            <h3 className="text-3xl font-bold text-center mb-6">💡 The Breakthrough</h3>
-            <p className="text-xl text-center mb-6">
-              Repayment happens through PRODUCTION (bio-slurry sales), not cash out of pocket. 
-              This aligns incentives and removes the #1 barrier.
-            </p>
-            <div className="text-center">
-              <p className="text-2xl font-bold">Result: 95% repayment (vs 54% cash model)</p>
+          {/* Main breakthrough card with integrated image */}
+          <Card className="p-8 max-w-6xl mx-auto bg-gradient-to-r from-primary to-green-600 text-primary-foreground mb-12 relative overflow-hidden">
+            {/* Background pattern */}
+            <div className="absolute top-0 right-0 w-1/3 h-full opacity-20">
+              <div className="w-full h-full bg-gradient-to-l from-white to-transparent"></div>
+            </div>
+            
+            <div className="flex flex-col lg:flex-row items-center gap-8 relative z-10">
+              <div className="flex-1">
+                <h3 className="text-3xl font-bold mb-6 flex items-center gap-3">
+                  <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-2xl">
+                    💡
+                  </div>
+                  The Breakthrough
+                </h3>
+                <p className="text-xl mb-6 leading-relaxed">
+                  Repayment happens through <span className="font-bold text-yellow-300">PRODUCTION</span> (bio-slurry sales), 
+                  not cash out of pocket. This aligns incentives and removes the #1 barrier.
+                </p>
+                <div className="bg-black/20 p-4 rounded-lg border border-white/20">
+                  <p className="text-2xl font-bold text-center">
+                    Result: <span className="text-green-300">95% repayment</span> (vs 54% cash model)
+                  </p>
+                </div>
+              </div>
+              
+              {/* Integrated image */}
+              <div className="flex-1">
+                <div className="relative group">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-green-400 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000 group-hover:duration-200"></div>
+                  <img 
+                    src="/Picture12.png" 
+                    alt="Bio-slurry production process showing organic waste being converted into valuable fertilizer"
+                    className="relative rounded-xl shadow-2xl w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-lg text-sm">
+                    Bio-slurry Production Cycle
+                  </div>
+                </div>
+              </div>
             </div>
           </Card>
 
-          {/* Flow Diagram */}
-          <div className="grid md:grid-cols-4 gap-4 mb-8 max-w-5xl mx-auto">
-            <Card className="p-6 text-center hover:shadow-glow transition-all">
-              <div className="text-4xl font-bold text-primary mb-2">30%</div>
-              <h3 className="font-bold mb-2">Member</h3>
-              <p className="text-sm text-muted-foreground">Contribution (in-kind)</p>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-glow transition-all">
-              <div className="text-4xl font-bold text-primary mb-2">70%</div>
-              <h3 className="font-bold mb-2">BUAK Fund</h3>
-              <p className="text-sm text-muted-foreground">Financing (loan)</p>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-glow transition-all">
-              <Leaf className="h-12 w-12 text-primary mx-auto mb-2" />
-              <h3 className="font-bold mb-2">Installed</h3>
-              <p className="text-sm text-muted-foreground">15 days</p>
-            </Card>
-
-            <Card className="p-6 text-center hover:shadow-glow transition-all">
-              <Repeat className="h-12 w-12 text-primary mx-auto mb-2" />
-              <h3 className="font-bold mb-2">Repay</h3>
-              <p className="text-sm text-muted-foreground">Via bio-slurry</p>
-            </Card>
-          </div>
+         
         </div>
       </section>
+
 
       {/* Step-by-Step Process */}
       <section className="py-20">
@@ -316,7 +335,7 @@ const Model = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-warm text-white">
+      <section className="py-20 bg-primary text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Ready to Invest in This Model?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
