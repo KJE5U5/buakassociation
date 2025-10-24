@@ -117,126 +117,126 @@ const Impact = () => {
     {
       icon: Zap,
       number: "73",
-      label: "Biodigesters Operational",
-      description: "Fixed-dome systems serving 73 households",
+      label: "Member Households",
+      description: "503 individuals served (6.9 avg family size)",
       color: "text-primary"
     },
     {
       icon: Users,
-      number: "69",
-      label: "Active Members",
-      description: "35 refugees + 34 host community (35% women)",
+      number: "503",
+      label: "People Impacted",
+      description: "36 refugee households (49%), 37 host (51%)",
       color: "text-secondary"
     },
     {
       icon: TrendingUp,
-      number: "UGX 87.6M",
-      label: "Community Revenue",
-      description: "Total income generated over 3 years",
+      number: "UGX 55.5M",
+      label: "Total Revenue (2024)",
+      description: "USD 15,000 annual revenue",
       color: "text-accent"
     },
     {
       icon: Leaf,
-      number: "500,975 kg",
-      label: "Firewood Saved",
-      description: "Annually by BUAK members",
+      number: "158,775 kg",
+      label: "Firewood Saved Annually",
+      description: "24,820 trees preserved per year",
       color: "text-primary"
     },
     {
       icon: Award,
       number: "94%",
-      label: "Satisfaction Rate",
-      description: "Members satisfied with biogas system",
+      label: "Member Satisfaction",
+      description: "Verified survey (n=68, Dec 2024)",
       color: "text-secondary"
     },
     {
       icon: Wallet,
-      number: "95%",
-      label: "Repayment Rate",
-      description: "Loan repayment through offtake model",
+      number: "58%",
+      label: "Collection Efficiency",
+      description: "Pilot cluster: 65%, Target: 70%",
       color: "text-accent"
     },
     {
       icon: Clock,
       number: "87.7%",
       label: "System Uptime",
-      description: "Average operational performance",
+      description: "64 of 73 digesters operational",
       color: "text-primary"
     },
     {
       icon: Target,
-      number: "26%",
-      label: "Profit Margins",
-      description: "Financially sustainable operations",
+      number: "-67%",
+      label: "2024 Margin",
+      description: "Investment phase, profitability Year 4 (2028)",
       color: "text-secondary"
     }
   ];
 
   const environmentalImpact = [
     {
-      metric: "CO2 Emissions Avoided",
-      value: "~400 tonnes",
-      description: "Annually from reduced firewood use"
+      metric: "CO₂ Emissions Avoided",
+      value: "128 tonnes",
+      description: "Annually (73 digesters × 1.75 tonnes each)"
     },
     {
       metric: "Trees Saved",
-      value: "~2,000",
-      description: "Equivalent trees protected per year"
+      value: "24,820",
+      description: "Trees preserved annually (73 × 340 trees)"
     },
     {
-      metric: "Forest Preservation",
-      value: "Bugoma Forest",
-      description: "Contributing to regional conservation"
+      metric: "At 300 Digesters",
+      value: "525 tonnes CO₂",
+      description: "102,000 trees saved annually at scale"
     }
   ];
 
 const socialImpact = [
   {
     metric: "Time Saved",
-    value: "3-4 hours/day",
-    description: "Per household, previously spent on firewood collection",
+    value: "6 hours/day",
+    description: "1,277 hours/year per household freed for education & income",
     image: "Picture6.png"
   },
   {
     metric: "Health Improvement",
-    value: "100%",
-    description: "Households report reduced respiratory issues",
+    value: "92%",
+    description: "Households report improved indoor air quality",
     image: "Picture7.png"
   },
   {
-    metric: "Children in School",
+    metric: "School Attendance",
     value: "Increased",
-    description: "More time for education, less time collecting firewood",
+    description: "Children freed from firewood collection duties",
     image: "Picture8.png"
   },
   {
-    metric: "Women Empowerment",
-    value: "35% women",
-    description: "Female leadership and economic participation",
+    metric: "Women Leadership",
+    value: "35%",
+    description: "Women in leadership positions",
     image: "Picture9.png"
   }
 ];
 
   const economicImpact = [
     {
-      metric: "Member Income",
-      value: "UGX 900K-1.2M",
-      description: "Annual income from bio-slurry sales per member"
+      metric: "Total Household Benefit",
+      value: "UGX 541,966",
+      description: "Average annual benefit (USD 146) - all sources combined"
     },
     {
       metric: "Firewood Savings",
-      value: "UGX 300K",
-      description: "Annual savings per household"
+      value: "UGX 270,000",
+      description: "75% reduction from UGX 30,000/month baseline"
     },
     {
-      metric: "Total Member Benefit",
-      value: "UGX 1.2-1.5M",
-      description: "Combined income + savings per household/year"
+      metric: "Increased Crop Revenue",
+      value: "UGX 275,000",
+      description: "Median increase from yield improvements (bio-slurry fertilizer)"
     },
     {
-      metric: "Jobs Created",
-      value: "12 permanent",
-      description: "Technicians, coordinators, and support staff"
+      metric: "Healthcare Savings",
+      value: "UGX 96,000",
+      description: "Reduced respiratory issues & clinic visits"
     }
   ];
 
@@ -316,14 +316,14 @@ const socialImpact = [
                       +3,450% since 2021
                     </div>
                   )}
-                  {metric.label === "Firewood Saved" && (
+                  {metric.label === "Firewood Saved Annually" && (
                     <div className="mt-3 text-xs text-muted-foreground">
-                      ≈156 trees preserved
+                      ≈24,820 trees preserved
                     </div>
                   )}
-                  {metric.label === "Community Revenue" && (
+                  {metric.label === "Total Revenue (2024)" && (
                     <div className="mt-3 text-xs text-muted-foreground">
-                      $23,300 annually
+                      $15,000 annually
                     </div>
                   )}
                 </Card>
@@ -411,15 +411,15 @@ const socialImpact = [
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm">
                     <span>CO₂ Emissions Avoided</span>
-                    <span className="font-bold text-primary">~400 tonnes</span>
+                    <span className="font-bold text-primary">128 tonnes/year</span>
                   </div>
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
                     <span>Equivalent to:</span>
                   </div>
                   <div className="text-xs text-muted-foreground space-y-1 pl-4">
-                    <div>• 87 cars off the road for 1 year</div>
-                    <div>• Planting 6,600 trees</div>
-                    <div>• 174,000 liters of gasoline not burned</div>
+                    <div>• 28 cars off the road for 1 year</div>
+                    <div>• At 300 digesters: 115 cars removed</div>
+                    <div>• Carbon credit value: USD 640-1,280 annually</div>
                   </div>
                 </div>
                 <p className="text-xs text-muted-foreground mt-4 italic">

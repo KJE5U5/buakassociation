@@ -165,11 +165,11 @@ Please contact this applicant within 7 days to schedule a site visit.`;
               <Card className="text-center">
                 <CardHeader>
                   <div className="text-6xl mb-4">💰</div>
-                  <CardTitle className="text-2xl">EARN INCOME</CardTitle>
+                  <CardTitle className="text-2xl">TOTAL BENEFIT</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-2">UGX 900K-1.2M per year</p>
-                  <p className="text-sm text-muted-foreground">Sell bio-slurry and earn money from waste</p>
+                  <p className="text-muted-foreground mb-2">UGX 541,966 per year</p>
+                  <p className="text-sm text-muted-foreground">Savings + income + health benefits combined</p>
                 </CardContent>
               </Card>
 
@@ -179,8 +179,8 @@ Please contact this applicant within 7 days to schedule a site visit.`;
                   <CardTitle className="text-2xl">SAVE TIME</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-2">219 hours per year</p>
-                  <p className="text-sm text-muted-foreground">No more firewood collection trips</p>
+                  <p className="text-muted-foreground mb-2">1,277 hours per year</p>
+                  <p className="text-sm text-muted-foreground">6 hours/day freed from firewood collection</p>
                 </CardContent>
               </Card>
 
@@ -200,8 +200,8 @@ Please contact this applicant within 7 days to schedule a site visit.`;
                   <CardTitle className="text-2xl">CHILDREN IN SCHOOL</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-2">100% school attendance</p>
-                  <p className="text-sm text-muted-foreground">More time to study. Better education.</p>
+                  <p className="text-muted-foreground mb-2">Increased attendance</p>
+                  <p className="text-sm text-muted-foreground">Children freed from firewood collection duties</p>
                 </CardContent>
               </Card>
 
@@ -211,7 +211,7 @@ Please contact this applicant within 7 days to schedule a site visit.`;
                   <CardTitle className="text-2xl">BE PART OF A TEAM</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Join 69 members. Cooperative ownership. Community support.</p>
+                  <p className="text-muted-foreground">Join 73 member households (503 people). Cooperative ownership. Community support.</p>
                 </CardContent>
               </Card>
             </div>
@@ -398,7 +398,7 @@ Please contact this applicant within 7 days to schedule a site visit.`;
                   <li>• BUAK visits weekly to collect bio-slurry</li>
                   <li>• You get paid UGX 2,500 per 20L can</li>
                   <li>• Payment credited toward loan repayment</li>
-                  <li>• Loan fully repaid in 18-24 months</li>
+                  <li>• Loan fully repaid in 3.7-4.3 years (44-52 months)</li>
                   <li>• After that, income is yours to keep forever!</li>
                 </ul>
               </div>

@@ -16,7 +16,7 @@ import {
   Zap,
   Award,
   ChevronRight,
-<<<<<<< HEAD
+  ChevronLeft,
   ArrowRight,
   Recycle,
   Sprout,
@@ -24,9 +24,6 @@ import {
   Target,
   HandshakeIcon,
   Globe
-=======
-  ChevronLeft
->>>>>>> 3a9c11e (Updated dashboard UI and fixed bugs)
 } from "lucide-react";
 import HeroSection from "@/components/hero";
 import DownloadInvestmentDeck from "@/components/downloaddeck";
@@ -285,26 +282,26 @@ const LogoSlider = () => {
 
 const Index = () => {
   const stats = [
-    { number: "73", label: "Biodigesters Operational", icon: Zap },
-    { number: "UGX 87.6M", label: "Community Revenue", icon: TrendingUp },
-    { number: "500,975 kg", label: "Firewood Saved", icon: TreePine },
-    { number: "94%", label: "Satisfaction Rate", icon: Award },
-    { number: "95%", label: "Repayment Rate", icon: Wallet },
-    { number: "69", label: "Members (35 Women)", icon: Users },
+    { number: "73", label: "Member Households (503 People)", icon: Zap },
+    { number: "UGX 55.5M", label: "Total Revenue (2024)", icon: TrendingUp },
+    { number: "158,775 kg", label: "Firewood Saved Annually", icon: TreePine },
+    { number: "94%", label: "Member Satisfaction", icon: Award },
+    { number: "58%", label: "Collection Efficiency", icon: Wallet },
+    { number: "73", label: "Households (36 Refugee, 37 Host)", icon: Users },
   ];
 
   const challenges = [
     {
       icon: Flame,
       title: "Energy Poverty",
-      stat: "99% rely on firewood",
-      description: "149,647 refugees spend 3-4 hours daily collecting firewood"
+      stat: "93% rely on firewood",
+      description: "Over 126,000 refugees and host community members face energy poverty"
     },
     {
       icon: TreePine,
       title: "Deforestation",
-      stat: "500,975 kg saved",
-      description: "BUAK members have saved half a million kg of firewood annually"
+      stat: "158,775 kg saved",
+      description: "BUAK members save 158,775 kg firewood annually—protecting 24,820 trees"
     },
     {
       icon: Wallet,
@@ -416,11 +413,11 @@ const Index = () => {
             <FadeUpElement delay={400}>
               <Card className="p-6 bg-primary text-primary-foreground">
                 <h3 className="text-2xl font-bold mb-4 text-center">
-                  No Cash Upfront Required | 95% Repayment Rate
+                  No Cash Upfront Required | 58% Collection Efficiency (Improving to 70%)
                 </h3>
                 <p className="text-center mb-4">
                   Repayment happens through production (bio-slurry sales), not cash out of pocket.
-                  This aligns incentives and removes the #1 barrier.
+                  This aligns incentives and removes the #1 barrier. 94% member retention shows the model works.
                 </p>
                 <div className="text-center">
                   <Link to="/model">
@@ -653,87 +650,52 @@ const Index = () => {
       </section>
 
       {/* Final CTA Section */}
-<<<<<<< HEAD
-      <section 
-        className="py-20 relative bg-cover bg-center"
-        style={{ backgroundImage: `url(${teamImage})` }}
+      <section
+        className="relative bg-cover bg-center bg-fixed py-32"
+        style={{ backgroundImage: `url('/img_4.png')` }}
       >
-        <div className="absolute inset-0 bg-gradient-overlay"></div>
-        <div className="relative z-10 container mx-auto px-4 text-center text-white">
-          <h2 className="text-4xl font-bold mb-4">Ready to Make an Impact?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Whether you want to invest, partner, or join us as a member—we'd love to hear from you.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-            <Link to="/invest">
-              <Button variant="secondary" size="lg">Invest</Button>
-            </Link>
-            <Link to="/join-us">
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-foreground">
-                Become a Member
-              </Button>
-            </Link>
-            <Link to="/work-with-us">
-              <Button variant="accent" size="lg">Partner With Us</Button>
-            </Link>
-          </div>
-          <p className="text-lg mb-4">Or explore our story:</p>
-          <Button variant="hero" size="lg">
-            Watch Our Video (3 min)
-          </Button>
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
+
+        {/* Content */}
+        <div className="relative z-10 text-center text-white px-4 max-w-3xl mx-auto">
+          <FadeUpElement>
+            <h2 className="text-5xl font-bold mb-6">
+              Ready to Make an Impact?
+            </h2>
+          </FadeUpElement>
+
+          <FadeUpElement delay={100}>
+            <p className="text-xl mb-10">
+              Whether you want to invest, partner, or join us as a member—we'd love to hear from you.
+            </p>
+          </FadeUpElement>
+
+          <FadeUpElement delay={200}>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/invest">
+                <Button variant="secondary" size="lg">
+                  Invest
+                </Button>
+              </Link>
+              <Link to="/join-us">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="border-white text-white hover:bg-white hover:text-foreground"
+                >
+                  Become a Member
+                </Button>
+              </Link>
+              <Link to="/work-with-us">
+                <Button variant="accent" size="lg" className="bg-primary text-white">
+                  Partner With Us
+                </Button>
+              </Link>
+            </div>
+          </FadeUpElement>
         </div>
       </section>
-=======
-     <section
-  className="relative bg-cover bg-center bg-fixed h-screen flex items-center justify-center"
-  style={{
-    backgroundImage: `url('/img_4.png')`,
-  }}
->
-  {/* Gradient overlay */}
-  <div className="absolute inset-0 bg-black/50"></div>
-
-  {/* Content */}
-  <div className="relative z-10 text-center text-white px-4 max-w-3xl mx-auto">
-    <FadeUpElement>
-      <h2 className="text-5xl sm:text-6xl font-bold mb-6">
-        Ready to Make an Impact?
-      </h2>
-    </FadeUpElement>
-
-    <FadeUpElement delay={100}>
-      <p className="text-lg sm:text-2xl mb-10">
-        Whether you want to invest, partner, or join us as a member—we'd love to hear from you.
-      </p>
-    </FadeUpElement>
-
-    <FadeUpElement delay={200}>
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Link to="/invest">
-          <Button variant="secondary" size="lg">
-            Invest
-          </Button>
-        </Link>
-        <Link to="/join">
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-white text-white hover:bg-white hover:text-foreground"
-          >
-            Become a Member
-          </Button>
-        </Link>
-        <Link to="/contact">
-          <Button variant="accent" size="lg" className="bg-primary text-white">
-            Partner With Us
-          </Button>
-        </Link>
-      </div>
-    </FadeUpElement>
-  </div>
-</section>
-
->>>>>>> 3a9c11e (Updated dashboard UI and fixed bugs)
 
       <Footer />
     </div>

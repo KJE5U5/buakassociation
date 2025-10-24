@@ -218,16 +218,16 @@ const FadeUpElement = ({ children, delay = 0, className = "" }: { children: Reac
 
               <FadeUpElement delay={1100}>
                 <h3 className="text-3xl font-bold mt-12 mb-6 text-center tracking-tight text-foreground">
-                  Today: 69 Members, One Mission
+                  Today: 73 Member Households, One Mission
                 </h3>
               </FadeUpElement>
 
               <FadeUpElement delay={1200}>
                 <p className="text-lg leading-relaxed mb-6">
-                  BUAK is now 69 members strong—35 refugees, 34 host community, 35% women. We've proven the model works:
+                  BUAK serves 73 member households (503 individuals total)—36 refugee households (49%), 37 host community households (51%), with 35% women in leadership. Each member household averages 6.9 family members, meaning our impact extends far beyond the 73 immediate members to over 500 people breathing cleaner air, cooking with clean gas, and building economic resilience.
                 </p>
                 <ul className="grid md:grid-cols-2 gap-4 mb-8 pl-6 list-none">
-                  {['73 biodigesters operational', 'UGX 87.6M community revenue generated', '500,975 kg firewood saved annually', '26% profit margins maintained', '95% repayment rate achieved'].map((item, idx) => (
+                  {['73 biodigesters operational', 'UGX 55.5M total revenue (2024)', '158,775 kg firewood saved annually', '87.7% system uptime', '58% collection efficiency (targeting 70%)', '94% member satisfaction'].map((item, idx) => (
                     <li key={idx} className="flex items-start text-lg">
                       <span className="text-primary mr-2 text-xl">✓</span> {item}
                     </li>
@@ -327,19 +327,19 @@ const FadeUpElement = ({ children, delay = 0, className = "" }: { children: Reac
           <h2 className="text-4xl font-bold text-center mb-12">BUAK at a Glance</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <Card className="p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">69</div>
-              <div className="text-sm text-muted-foreground">Members</div>
-              <div className="text-xs mt-1">(35 refugees, 34 host)</div>
-            </Card>
-            <Card className="p-6 text-center">
-              <div className="text-3xl font-bold text-primary mb-2">35%</div>
-              <div className="text-sm text-muted-foreground">Women</div>
-              <div className="text-xs mt-1">Gender inclusion</div>
-            </Card>
-            <Card className="p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">73</div>
-              <div className="text-sm text-muted-foreground">Biodigesters</div>
-              <div className="text-xs mt-1">Operational</div>
+              <div className="text-sm text-muted-foreground">Households</div>
+              <div className="text-xs mt-1">503 individuals served</div>
+            </Card>
+            <Card className="p-6 text-center">
+              <div className="text-3xl font-bold text-primary mb-2">49%</div>
+              <div className="text-sm text-muted-foreground">Refugee</div>
+              <div className="text-xs mt-1">36 refugee households</div>
+            </Card>
+            <Card className="p-6 text-center">
+              <div className="text-3xl font-bold text-primary mb-2">51%</div>
+              <div className="text-sm text-muted-foreground">Host Community</div>
+              <div className="text-xs mt-1">37 host households</div>
             </Card>
             <Card className="p-6 text-center">
               <div className="text-3xl font-bold text-primary mb-2">3</div>
@@ -347,24 +347,24 @@ const FadeUpElement = ({ children, delay = 0, className = "" }: { children: Reac
               <div className="text-xs mt-1">Track record</div>
             </Card>
             <Card className="p-6 text-center">
-              <div className="text-3xl font-bold text-secondary mb-2">87.6M</div>
+              <div className="text-3xl font-bold text-secondary mb-2">55.5M</div>
               <div className="text-sm text-muted-foreground">UGX Revenue</div>
-              <div className="text-xs mt-1">Community income</div>
+              <div className="text-xs mt-1">2024 total revenue</div>
             </Card>
             <Card className="p-6 text-center">
-              <div className="text-3xl font-bold text-secondary mb-2">26%</div>
-              <div className="text-sm text-muted-foreground">Profit Margins</div>
-              <div className="text-xs mt-1">Financially sustainable</div>
+              <div className="text-3xl font-bold text-secondary mb-2">87.7%</div>
+              <div className="text-sm text-muted-foreground">System Uptime</div>
+              <div className="text-xs mt-1">64 of 73 operational</div>
             </Card>
             <Card className="p-6 text-center">
-              <div className="text-3xl font-bold text-accent mb-2">95%</div>
-              <div className="text-sm text-muted-foreground">Repayment</div>
-              <div className="text-xs mt-1">Model validation</div>
+              <div className="text-3xl font-bold text-accent mb-2">58%</div>
+              <div className="text-sm text-muted-foreground">Collection Efficiency</div>
+              <div className="text-xs mt-1">Target: 70% by Year 2</div>
             </Card>
             <Card className="p-6 text-center">
               <div className="text-3xl font-bold text-accent mb-2">94%</div>
               <div className="text-sm text-muted-foreground">Satisfaction</div>
-              <div className="text-xs mt-1">Member happiness</div>
+              <div className="text-xs mt-1">Member retention</div>
             </Card>
           </div>
         </div>
